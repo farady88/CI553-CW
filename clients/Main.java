@@ -19,6 +19,7 @@ import clients.warehousePick.PickModel;
 import clients.warehousePick.PickView;
 import middle.LocalMiddleFactory;
 import middle.MiddleFactory;
+import catalogue.Receipt;
 
 import javax.swing.*;
 import java.awt.*;

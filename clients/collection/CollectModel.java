@@ -3,6 +3,8 @@ package clients.collection;
 import debug.DEBUG;
 import middle.MiddleFactory;
 import middle.OrderProcessing;
+import catalogue.BetterBasket;
+import catalogue.Receipt;
 
 import java.util.Observable;
 
@@ -14,6 +16,7 @@ import java.util.Observable;
 
 public class CollectModel extends Observable
 {
+  private static BetterBasket theBasket = null;
   private String      theAction   = "";
   private String      theOutput   = "";
   private OrderProcessing theOrder     = null;
@@ -73,6 +76,14 @@ public class CollectModel extends Observable
       theAction = "!!!Error";
     }
     setChanged(); notifyObservers(theAction);
+  displayReceipt();
+  }
+
+  private void displayReceipt() {
+    Receipt.printReceipt(theBasket, null);
+    setChanged();
+    notifyObservers("Order collected. Receipt displayed.");
+    clearChanged();
   }
 
   /**
@@ -83,5 +94,7 @@ public class CollectModel extends Observable
   {
     return theOutput;
   }
-  
+    public void setBetterBasket(BetterBasket basket) {
+      this.theBasket = basket;
+  }
 }

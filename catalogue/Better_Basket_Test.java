@@ -4,6 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
 
+/**
+ * A formal confirmation of payment 
+ * in the form of a receipt
+ * @author  Faaruq Adegunwa
+ */
+
 public class Better_Basket_Test {
     @Test 
     void testMergeAddProduct(){

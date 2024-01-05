@@ -2,6 +2,8 @@ package clients.collection;
 
 import middle.MiddleFactory;
 import middle.OrderProcessing;
+import catalogue.BetterBasket;
+import catalogue.Receipt;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,6 +22,8 @@ public class CollectView implements Observer
   
   private static final int H = 300;       // Height of window pixels
   private static final int W = 400;       // Width  of window pixels
+
+  private static final BetterBasket basket = null;
 
   private final JLabel      theAction  = new JLabel();
   private final JTextField  theInput   = new JTextField();
@@ -96,5 +100,11 @@ public class CollectView implements Observer
     theOutput.setText( model.getResponce() );
     theInput.requestFocus();               // Focus is here
   }
+  private void displayReceipt() {
+   
+    Receipt.printReceipt(basket, theOutput);
 
+    ReceiptFrame receiptFrame = new ReceiptFrame(basket);
+    receiptFrame.setVisible(true);
+}
 }
