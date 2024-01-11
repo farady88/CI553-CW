@@ -70,6 +70,8 @@ public class CollectView implements Observer
       e -> {
         BetterBasket basket = new BetterBasket();
       JTextArea receiptTextArea = new JTextArea();
+      ReceiptFrame receiptFrame = new ReceiptFrame(basket);
+    receiptFrame.setVisible(true);
       });
 
     cp.add( theBtReceipt );                         //  Add to canvas
