@@ -63,17 +63,13 @@ public class CollectView implements Observer
     theBtCollect.setBounds( 16, 25+60*0, 80, 40 );  // Check Button
     theBtCollect.addActionListener(                 // Call back code
       e -> cont.doCollect( theInput.getText()) );
-      ReceiptFrame receiptFrame = new ReceiptFrame(basket);
     cp.add( theBtCollect );                         //  Add to canvas
 
     theBtReceipt.setBounds (16, 100+180*0, 80, 40);
-    theBtReceipt.addActionListener(                 // Call back code
+    theBtReceipt.addActionListener(                 
       e -> {
         BetterBasket basket = new BetterBasket();
       JTextArea receiptTextArea = new JTextArea();
-      receiptFrame.updateReceipt(receiptTextArea);
-      
-      receiptFrame.setVisible(true);
       });
 
     cp.add( theBtReceipt );                         //  Add to canvas
