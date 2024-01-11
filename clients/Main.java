@@ -63,6 +63,19 @@ class Main
       startDisplayGUI_MVC( mlf );
     startCollectionGUI_MVC( mlf );
   }
+
+  public void startCustomerCatalogueGUI_MVC(MiddleFactory mlf)
+  {
+    JFrame cataloguFrame = new JFrame("Catalogue");
+    String data [][]= {{"0001","40","LED HD TV","£269.00"},
+                       {"0002","RADIO","29.99"},
+                       {"0003","TOASTER","£19.99"},
+                       {"0004","WATCH","£29.99"},
+                       {"0005","DIGITAL CAMERA","£89.99"},
+                       {"0006","MP3 PLAYER","£7.99"},
+                       {"0007","32Gb USB2 DRIVE","£6.99"}};
+    String column []= {"CODE","DESCRIPTION","PRICE"};
+  }
   
   public void startCustomerGUI_MVC(MiddleFactory mlf )
   {
