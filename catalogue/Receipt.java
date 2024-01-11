@@ -9,9 +9,9 @@ public class Receipt {
     private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#.##");
 
     public static void printReceipt(BetterBasket basket, JTextArea receiptTextArea) {
-        System.out.println("===== Receipt =====");
-        System.out.printf("%-15s %-15s %-10s %-10s\n", "ProductNum", "Description", "Quantity", "Total Price");
-        System.out.println("--------------------------------------------------");
+        receiptTextArea.append("===== Receipt =====");
+        receiptTextArea.append(String.format("%-15s %-15s %-10s %-10s\n", "ProductNum", "Description", "Quantity", "Total Price"));
+        receiptTextArea.append("--------------------------------------------------");
 
         for (Product product : basket) {
             String productNum = product.getProductNum();
@@ -19,14 +19,14 @@ public class Receipt {
             int quantity = product.getQuantity();
             double totalPrice = product.getPrice() * quantity;
 
-            System.out.printf("%-15s %-15s %-10d $%-10s\n", productNum, description, quantity,
-                    DECIMAL_FORMAT.format(totalPrice));
+            receiptTextArea.append(String.format("%-15s %-15s %-10d $%-10s\n", productNum, description, quantity,
+                    DECIMAL_FORMAT.format(totalPrice)));
         }
 
         double grandTotal = calculateGrandTotal(basket);
-        System.out.println("--------------------------------------------------");
-        System.out.printf("%-40s $%-10s\n", "Grand Total:", DECIMAL_FORMAT.format(grandTotal));
-        System.out.println("===================");
+        receiptTextArea.append("--------------------------------------------------");
+        receiptTextArea.append(String.format("%-40s $%-10s\n", "Grand Total:", DECIMAL_FORMAT.format(grandTotal)));
+        receiptTextArea.append("===================");
     }
 
     private static double calculateGrandTotal(BetterBasket basket) {

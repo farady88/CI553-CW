@@ -19,6 +19,7 @@ import java.util.Observer;
 public class CollectView implements Observer
 {
  private static final String COLLECT = "Collect";
+ private static final String RECEIPT = "Receipt";
   
   private static final int H = 300;       // Height of window pixels
   private static final int W = 400;       // Width  of window pixels
@@ -30,6 +31,7 @@ public class CollectView implements Observer
   private final JTextArea   theOutput  = new JTextArea();
   private final JScrollPane theSP      = new JScrollPane();
   private final JButton     theBtCollect= new JButton( COLLECT );
+  private final JButton     theBtReceipt= new JButton(RECEIPT);
  
   private OrderProcessing   theOrder = null;
   private CollectController cont     = null;
@@ -61,7 +63,22 @@ public class CollectView implements Observer
     theBtCollect.setBounds( 16, 25+60*0, 80, 40 );  // Check Button
     theBtCollect.addActionListener(                 // Call back code
       e -> cont.doCollect( theInput.getText()) );
+      ReceiptFrame receiptFrame = new ReceiptFrame(basket);
     cp.add( theBtCollect );                         //  Add to canvas
+
+    theBtReceipt.setBounds (16, 100+180*0, 80, 40);
+    theBtReceipt.addActionListener(                 // Call back code
+      e -> {
+        BetterBasket basket = new BetterBasket();
+      JTextArea receiptTextArea = new JTextArea();
+      receiptFrame.updateReceipt(receiptTextArea);
+      
+      receiptFrame.setVisible(true);
+      });
+
+    cp.add( theBtReceipt );                         //  Add to canvas
+
+
 
     theAction.setBounds( 110, 25 , 270, 20 );       // Message area
     theAction.setText( "" );                        // Blank
